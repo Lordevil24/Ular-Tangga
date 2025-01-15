@@ -1,0 +1,120 @@
+   /* style.css */
+
+    /* Gaya umum */
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(to bottom right, #74ebd5, #9face6);
+    }
+    
+    .game-container {
+        text-align: center;
+    }
+    
+    /* Papan permainan */
+    .board {
+        display: grid;
+        grid-template-columns: repeat(10, 50px);
+        grid-template-rows: repeat(10, 50px);
+        gap: 2px;
+        margin: 20px auto;
+        background-color: #fff;
+        position: relative;
+    }
+    
+    .board div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8em;
+        font-weight: bold;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+    
+    /* Gambar ular dan tangga */
+    .snake, .ladder {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .snake {
+        background-image: url('https://images.app.goo.gl/R2HeJHm2Ro3i6b437'); /* Ganti dengan gambar ular Anda */
+    }
+    
+    .ladder {
+        background-image: url('ladder.png'); /* Ganti dengan gambar tangga Anda */
+    }
+    
+    /* Kontrol */
+    .controls {
+        margin-top: 20px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Popup animasi dadu */
+    .dice-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    /* Animasi angka pada dadu */
+    .popup-content .dice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        animation: rollDiceAnimation 1s ease-in-out infinite;
+    }
+    
+    @keyframes rollDiceAnimation {
+        0%, 100% {
+            transform: rotate(0);
+        }
+        25% {
+            transform: rotate(90deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        75% {
+            transform: rotate(270deg);
+        }
+    }
+    
