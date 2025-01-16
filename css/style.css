@@ -1,7 +1,12 @@
 /* Umum */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../img/bgg.png');
+    background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,7 +17,8 @@ body {
   }
   
   h1 {
-    margin-top: 3rem;
+    margin-top: 10px;
+    margin-bottom: 2rem;
     text-align: center;
     color: #333;
   }
@@ -60,7 +66,7 @@ body {
 
 /* Form container dengan animasi */
 .form-container {
-  background: #fff;
+  background: linear-gradient(to right, rgb(44,174,146),  rgb(79,192,121));
   padding: 20px 40px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -76,7 +82,7 @@ input[type="text"] {
   padding: 10px;
   margin-top: 10px;
   border: 3px solid #838383;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 /* Animasi untuk input-group */
