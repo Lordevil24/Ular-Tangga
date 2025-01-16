@@ -1,120 +1,243 @@
-   /* style.css */
+/* Umum */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../img/bgg.png');
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h1 {
+    margin-top: 3rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .hidden {
+    display: none;
+    background-image: url('../img/tangga.png');
+  }
+  
+  button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+/* Animasi melayang dan fade-in */
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    /* Gaya umum */
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        background: linear-gradient(to bottom right, #74ebd5, #9face6);
-    }
-    
-    .game-container {
-        text-align: center;
-    }
-    
-    /* Papan permainan */
-    .board {
-        display: grid;
-        grid-template-columns: repeat(10, 50px);
-        grid-template-rows: repeat(10, 50px);
-        gap: 2px;
-        margin: 20px auto;
-        background-color: #fff;
-        position: relative;
-    }
-    
-    .board div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.8em;
-        font-weight: bold;
-        border: 1px solid #ccc;
-        position: relative;
-    }
-    
-    /* Gambar ular dan tangga */
-    .snake, .ladder {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .snake {
-        background-image: url('https://images.app.goo.gl/R2HeJHm2Ro3i6b437'); /* Ganti dengan gambar ular Anda */
-    }
-    
-    .ladder {
-        background-image: url('ladder.png'); /* Ganti dengan gambar tangga Anda */
-    }
-    
-    /* Kontrol */
-    .controls {
-        margin-top: 20px;
-    }
-    
-    button {
-        padding: 10px 20px;
-        font-size: 1rem;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    button:hover {
-        background-color: #0056b3;
-    }
-    
-    /* Popup animasi dadu */
-    .dice-popup {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100px;
-        height: 100px;
-        background-color: rgba(255, 255, 255, 0.9);
-        border: 2px solid #ccc;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .hidden {
-        display: none;
-    }
-    
-    /* Animasi angka pada dadu */
-    .popup-content .dice {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #333;
-        animation: rollDiceAnimation 1s ease-in-out infinite;
-    }
-    
-    @keyframes rollDiceAnimation {
-        0%, 100% {
-            transform: rotate(0);
-        }
-        25% {
-            transform: rotate(90deg);
-        }
-        50% {
-            transform: rotate(180deg);
-        }
-        75% {
-            transform: rotate(270deg);
-        }
-    }
-    
+/* Form container dengan animasi */
+.form-container {
+  background: #fff;
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-bottom: 20px;
+  
+  /* Animasi pada form container */
+  animation: floatIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 3px solid #838383;
+  border-radius: 4px;
+}
+
+/* Animasi untuk input-group */
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+  
+  /* Animasi input group secara berurutan */
+  animation: floatIn 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* Delay animasi untuk input-group pertama dan kedua */
+.input-group:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.input-group:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+  
+ /* Game Screen */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Membuat 10 kolom */
+  grid-template-rows: repeat(10, 1fr); /* Membuat 10 baris */
+  gap: 1px; /* Menambahkan jarak antara cell */
+  width: 600px;
+  height: 600px;
+  margin-bottom: 20px;
+  /* direction: rtl; */
+  position: relative;
+}
+
+.cell {
+  position: relative;
+  width: 100%; /* Membuat lebar cell mengikuti ukuran grid */
+  height: 100%; /* Membuat tinggi cell mengikuti ukuran grid */
+  border: 1px solid #000; /* Menambahkan border pada setiap cell */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.player-circle {
+  position: absolute;
+  width: 30px; /* Ukuran lingkaran pemain */
+  height: 30px; /* Ukuran lingkaran pemain */
+  border-radius: 50%;
+  z-index: 2; /* Pastikan lingkaran pemain di atas grid */
+}
+
+  .players {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+  }
+  
+  #playerTurn {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  /* Dice Popup */
+  .dice-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup-content {
+    font-size: 2rem;
+    font-weight: bold;
+
+  }
+#popupDice {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: rollDice 1s infinite;
+}
+
+/* Animasi untuk mengacak angka */
+@keyframes rollDice {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: rotate(90deg);
+    opacity: 1;
+  }
+  40% {
+    transform: rotate(180deg);
+    opacity: 0.8;
+  }
+  60% {
+    transform: rotate(270deg);
+    opacity: 0.6;
+  }
+  80% {
+    transform: rotate(360deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: rotate(450deg);
+    opacity: 1;
+  }
+}
+
+/* Menyembunyikan popup */
+#dicePopup.hidden {
+  display: none;
+}
+
+  /* Board Number Styles */
+  .cell::before {
+    content: attr(data-number); /* Menampilkan angka berdasarkan atribut data-number */
+    position: absolute;
+    font-size: 1.2rem; /* Pastikan ukuran angka cukup besar */
+    color: #333; /* Warna angka */
+    font-weight: bold;
+    z-index: 2; /* Pastikan angka di atas background */
+  }
+  
+
+  .imgrl {
+    position: absolute;  /* Memungkinkan gambar untuk berada di atas elemen lainnya */
+    z-index: 1;  /* Memastikan gambar berada di depan board */
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 0px;
+    width: 600px;
+    height: 600px;  /* Mengatur posisi gambar di atas board */
+  }
+  
+  

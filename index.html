@@ -4,27 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ular Tangga</title>
-<link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  <div class="game-container">
-    <h1>Ular Tangga</h1>
-    <div class="board"></div>
-    <div class="controls">
-      <div class="players">
-        <button id="player1Button">Roll Dice (Player 1)</button>
-        <button id="player2Button">Roll Dice (Player 2)</button>
+  <div id="inputScreen" class="form-container">
+    <h1>Selamat Datang Di Game <br> Ular Tangga</h1>
+    <form id="playerForm">
+      <div class="input-group">
+        <label for="player1Name">Nama Pemain 1:</label>
+        <input type="text" id="player1Name" placeholder="Masukkan nama Pemain 1" required>
       </div>
-      <div id="dicePopup" class="dice-popup hidden">
-        <div class="popup-content">
-          <div class="dice" id="popupDice"></div>
-        </div>
+      <div class="input-group">
+        <label for="player2Name">Nama Pemain 2:</label>
+        <input type="text" id="player2Name" placeholder="Masukkan nama Pemain 2" required>
       </div>
-      <p id="playerTurn">Giliran: Player 1</p>
-    </div>
+      <button type="submit" id="startGameButton">Mulai Permainan</button>
+    </form>
   </div>
-  <script src="js/script.js"></script>
 
-</script>
+  <div id="gameScreen" class="hidden">
+    <h1 class="h1">Permainan Ular Tangga</h1>
+    <div class="board-container">
+      <img class="imgrl" src="img/rl.jpg" alt="">
+      <div class="board" id="board">
+        <div class="player-circle"></div>
+      </div>
+    
+
+      <div class="players">
+        <button id="player1Button">Roll Dice (<span id="player1Label">Player 1</span>)</button>
+        <button id="player2Button">Roll Dice (<span id="player2Label">Player 2</span>)</button>
+      </div>
+      <div id="dicePopup" class="hidden">
+        <div id="popupDice"></div>
+      </div>
+      <p id="playerTurn">Giliran: <span id="currentPlayer">Player 1</span></p>
+    </div>
+    </div>
+    <button onclick="toggleMusic()">Play/Pause Music</button>
+  <script src="js/script.js"></script>
 </body>
 </html>
